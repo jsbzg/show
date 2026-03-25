@@ -37,6 +37,27 @@
   - 经营概览、服务分布、员工业绩（分页）
   - 审计日志分页，关键操作可追溯
 
+## 截图展示
+
+- 登录页与注册弹窗  
+  ![登录与注册](./docs/screenshots/login-register.png)
+- 工作台总览  
+  ![工作台](./docs/screenshots/dashboard-overview.png)
+- 会员管理与模糊检索下拉  
+  ![会员管理](./docs/screenshots/customer-management.png)
+- 充值/消费与校验码校验  
+  ![充值消费](./docs/screenshots/transaction-verify-code.png)
+- 统计报表与审计日志  
+  ![报表审计](./docs/screenshots/report-audit.png)`
+  `![报表审计](./docs/screenshots/stat.png)
+
+## 项目亮点
+
+- 极简上手：围绕理发店真实日常，不做过度设计。
+- 安全可用：统一鉴权 + 审计日志 + 租户隔离。
+- 离线友好：SQLite 本地持久化，无需单独部署数据库。
+- 可打包分发：可直接产出可执行程序，适合门店终端落地。
+
 ## 系统架构
 
 ```mermaid
@@ -106,27 +127,6 @@ flowchart LR
 2. 后端 Maven 打包
 3. jpackage 生成应用目录
 4. 输出 `Show.zip` 与 `Show.exe`
-
-## 截图展示
-
-- 登录页与注册弹窗  
-  ![登录与注册](./docs/screenshots/login-register.png)
-- 工作台总览  
-  ![工作台](./docs/screenshots/dashboard-overview.png)
-- 会员管理与模糊检索下拉  
-  ![会员管理](./docs/screenshots/customer-management.png)
-- 充值/消费与校验码校验  
-  ![充值消费](./docs/screenshots/transaction-verify-code.png)
-- 统计报表与审计日志  
-  ![报表审计](./docs/screenshots/report-audit.png)`
-  `![报表审计](./docs/screenshots/stat.png)
-
-## 项目亮点
-
-- 极简上手：围绕理发店真实日常，不做过度设计。
-- 安全可用：统一鉴权 + 审计日志 + 租户隔离。
-- 离线友好：SQLite 本地持久化，无需单独部署数据库。
-- 可打包分发：可直接产出可执行程序，适合门店终端落地。
 
 ## 后续演进方向
 
