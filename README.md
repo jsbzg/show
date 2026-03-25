@@ -48,8 +48,8 @@
 - 充值/消费与校验码校验  
   ![充值消费](./docs/screenshots/transaction-verify-code.png)
 - 统计报表与审计日志  
-  ![报表审计](./docs/screenshots/report-audit.png)`
-  `![报表审计](./docs/screenshots/stat.png)
+  ![报表审计](./docs/screenshots/report-audit.png)
+  ![报表审计](./docs/screenshots/stat.png)
 
 ## 项目亮点
 
