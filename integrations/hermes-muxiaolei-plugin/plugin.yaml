@@ -1,0 +1,29 @@
+name: muxiaolei
+version: "0.3.1"
+description: "木小垒业务：只读查询+prepare待确认写入（非MCP）。mock确认工具仅MUXIAOLEI_WRITE_MODE=mock时由代码注册，yaml不宣称。"
+requires_env:
+  - MUXIAOLEI_USERNAME
+  - MUXIAOLEI_PASSWORD
+provides_tools:
+  - muxiaolei_health
+  - muxiaolei_search_members
+  - muxiaolei_get_balance
+  - muxiaolei_member_detail
+  - muxiaolei_catalog
+  - muxiaolei_appointments
+  - muxiaolei_business_summary
+  - muxiaolei_operation_status
+  - muxiaolei_confirmation_status
+  - muxiaolei_capabilities
+  - muxiaolei_prepare_update_member_basic
+  - muxiaolei_prepare_archive_member
+  - muxiaolei_prepare_create_member
+  - muxiaolei_prepare_update_preferences
+  - muxiaolei_prepare_recharge
+  - muxiaolei_prepare_checkout
+  - muxiaolei_prepare_deduct
+  - muxiaolei_prepare_issue_card
+  - muxiaolei_prepare_appointment
+  - muxiaolei_prepare_appointment_status
+  - muxiaolei_prepare_reverse_order
+  - muxiaolei_delete_customer

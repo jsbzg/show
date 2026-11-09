@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -120,6 +121,36 @@ public class BarbershopService {
             request.getName().trim(), phone, verifyCode, defaultText(request.getRemark()), tenantId, parseId(id));
         recordLog("UPDATE_CUSTOMER", "customer", id, "更新会员: " + request.getName().trim());
         return getCustomerById(tenantId, id);
+    }
+
+
+    /**
+     * One-way soft archive: active → inactive. History/recharge/consume rows stay.
+     * Idempotent if already inactive. Permanent delete is not supported.
+     * Existing product code does not refuse archive solely because balance &gt; 0;
+     * balance is returned for human confirmation surfaces.
+     */
+    @Transactional
+    public Map<String, Object> archiveCustomer(String id) {
+        long tenantId = tenantId();
+        Customer old = getCustomerById(tenantId, id);
+        BigDecimal balance = getBalance(id);
+        boolean already = !"active".equals(old.getStatus());
+        if (!already) {
+            jdbcTemplate.update(
+                "UPDATE t_customer SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE tenant_id = ? AND id = ?",
+                "inactive", tenantId, parseId(id));
+            recordLog("DELETE_CUSTOMER", "customer", id, "停用会员: " + old.getName());
+        }
+        Customer now = getCustomerById(tenantId, id);
+        Map<String, Object> out = new LinkedHashMap<>();
+        out.put("customer", now);
+        out.put("archived", true);
+        out.put("idempotent", already);
+        out.put("ledgerPreserved", true);
+        out.put("balance", balance);
+        out.put("permanentDelete", false);
+        return out;
     }
 
     @Transactional

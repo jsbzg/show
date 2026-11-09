@@ -1,0 +1,24 @@
+server:
+  port: 0
+spring:
+  datasource:
+    url: jdbc:sqlite:${SHOW_TEST_DB:./target/show-it.db}
+    username: show
+    password: show
+    driver-class-name: org.sqlite.JDBC
+  main:
+    lazy-initialization: true
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+  jmx:
+    enabled: false
+app:
+  jwt:
+    secret: 4f5f39309b8d5d75f2af1e46f6718cde4fcf39a267d35a8fd153b2b9d28036ab
+    expire-minutes: 720
+    tenant-aes-key: 734bf7fa2ac84ed6a2e839da8f0200c2
+logging:
+  level:
+    root: WARN
